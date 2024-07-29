@@ -46,3 +46,5 @@
 /.vs
 .vs/CppTools/v17/.suo
 .vs/CppTools/v17/Browse.VC.db
+*.json
+/.vs
