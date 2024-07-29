@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+/.vs
+/.vs
+*.pdb
+*.idb
+*.lastbuildstate
+*.tlog
+*.log
+*.ilk
+*.db
+/.vs
+*.db
+*.db
+/.vs/CppTools/v17
+/.vs
