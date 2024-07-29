@@ -44,3 +44,5 @@
 *.db
 /.vs/CppTools/v17
 /.vs
+.vs/CppTools/v17/.suo
+.vs/CppTools/v17/Browse.VC.db
