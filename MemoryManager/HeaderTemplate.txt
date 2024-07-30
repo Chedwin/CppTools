@@ -1,0 +1,4 @@
+#ifndef HEADER_TITLE_H
+#define HEADER_TITLE_H
+
+#endif // !HEADER_TITLE_H

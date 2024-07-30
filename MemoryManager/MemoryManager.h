@@ -6,8 +6,8 @@ class IMemoryManager
 public:
 	virtual ~IMemoryManager();
 
-	virtual void* allocate(size_t) = 0;
-	virtual void free(void*) = 0;
+	virtual void* Allocate(size_t) = 0;
+	virtual void FreeMem(void*) = 0;
 };
 
 void* operator new(size_t a_size);
