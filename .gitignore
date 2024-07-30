@@ -48,3 +48,4 @@
 .vs/CppTools/v17/Browse.VC.db
 *.json
 /.vs
+/MemoryManager/x64
