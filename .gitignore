@@ -49,3 +49,4 @@
 *.json
 /.vs
 /MemoryManager/x64
+/MemoryManager/Release
