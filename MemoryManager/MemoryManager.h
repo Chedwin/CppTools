@@ -6,17 +6,16 @@ class IMemoryManager
 public:
 	virtual ~IMemoryManager();
 
-	virtual void* Allocate(size_t) = 0;
+	virtual void* AllocateMem(size_t) = 0;
 	virtual void FreeMem(void*) = 0;
 };
 
-void* operator new(size_t a_size);
-void operator delete(void* a_ptr);
-
-void* operator new[] (size_t a_size);
-void operator delete[] (void* a_array);
-
-void* operator new(size_t a_size, IMemoryManager& a_memoryManager);
-void operator delete(void* a_ptr, IMemoryManager& a_memoryManager);
+#define MEMORY_OPERATOR_OVERLOADS(alignment) \
+	void* operator new(size_t a_size); \
+	void* operator new[] (size_t a_size); \
+	void* operator new(size_t a_size, IMemoryManager& a_memoryManager); \
+	void operator delete(void* a_ptr); \
+	void operator delete[] (void* a_array); \
+	void operator delete(void* a_ptr, IMemoryManager& a_memoryManager); \
 
 #endif // !MEMORY_H
