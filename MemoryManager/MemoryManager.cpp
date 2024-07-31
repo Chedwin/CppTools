@@ -7,57 +7,88 @@ IMemoryManager::~IMemoryManager() {}
 class MemoryManager : public IMemoryManager
 {
 public:
+	MemoryManager();
 	~MemoryManager() override;
 
-	void* allocate(size_t a_size) = 0;
-	void free(void* a_ptr) = 0;
+	void* AllocateMem(size_t a_size) override;
+	void FreeMem(void* a_ptr) override;
+
+	void Expand();
+	void CleanUp();
+
+private:
+	struct Block
+	{
+		Block* pNext = nullptr;
+	};
+
+	Block* pHead = nullptr;
 };
 
-///////////////////////////////////////////
+static MemoryManager memManager; // Exclusive to this translation unit
+
+/*** Memory Manager ***/
+
+MemoryManager::MemoryManager()
+	: IMemoryManager()
+	, pHead(nullptr)
+{
+	Expand();
+}
 
 MemoryManager::~MemoryManager()
 {
+	CleanUp();
+}
+
+void MemoryManager::Expand()
+{
 
 }
 
-void* MemoryManager::allocate(size_t a_size)
+void MemoryManager::CleanUp()
+{
+
+}
+
+void* MemoryManager::AllocateMem(size_t a_size)
 {
 	return nullptr;
 }
 
-void MemoryManager::free(void* a_ptr)
+void MemoryManager::FreeMem(void* a_ptr)
 {
 
 }
 
-///////////////////////////////////////////
+/*** new delete operator overloads ***/
 
-void* operator new(size_t aSize)
+void* operator new(size_t a_size)
 {
-	return nullptr;
+	return memManager.AllocateMem(a_size);
 }
 
 void operator delete(void* a_ptr)
 {
-
+	memManager.FreeMem(a_ptr);
 }
 
 void* operator new[](size_t a_size)
 {
-	return nullptr;
+	return memManager.AllocateMem(a_size);
 }
 
 void operator delete[](void* a_array)
 {
-
+	memManager.FreeMem(a_array);
 }
 
 void* operator new(size_t a_size, MemoryManager& a_memoryManager)
 {
-	return nullptr;
+	return memManager.AllocateMem(a_size);
 }
 
 void operator delete(void* a_ptr, MemoryManager& a_memoryManager)
 {
-
+	memManager.FreeMem(a_ptr);
 }
